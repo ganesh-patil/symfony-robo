@@ -16,11 +16,17 @@ class RoboFile extends \Robo\Tasks
     }
     
     public function gitPush() {
+         $this->_exec('./vendor/bin/simple-phpunit');
+        
          $this->taskGitStack()
  	->stopOnFail()
  	->add('-A')
  	->commit('adding current by robo ')
  	->push('origin','master')
  	->run();
+     }
+
+     public function unitTest() {
+           $this->_exec('./vendor/bin/simple-phpunit');
      }
 }
