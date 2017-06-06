@@ -11,6 +11,9 @@ class RoboFile extends \Robo\Tasks
          $this->_exec('php bin/console server:start');
 
     }
+    public function composerInstall(){
+       $this->taskComposerInstall()->run();
+    }
     
     public function gitPush() {
          $this->taskGitStack()
