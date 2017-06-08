@@ -16,13 +16,16 @@ class RoboFile extends \Robo\Tasks
     }
     
     public function gitPush() {
-         if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful()) {
+        $this->taskMinify( 'web/js/custom.css' )
+        ->run();
+        if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful()) 
+        {
            $this->taskGitStack()
-        ->stopOnFail()
-        ->add('-A')
-        ->commit('adding current by robo ')
-        ->push('origin','master')
-        ->run();  
+            ->stopOnFail()
+            ->add('-A')
+            ->commit('adding current by robo ')
+            ->push('origin','master')
+            ->run();  
         } 
      }
 
