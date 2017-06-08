@@ -16,7 +16,7 @@ class RoboFile extends \Robo\Tasks
     }
     
     public function gitPush() {
-        $this->taskMinify( 'web/js/custom.css' )
+        $this->taskMinify( 'custom.css' )
         ->run();
         if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful()) 
         {
