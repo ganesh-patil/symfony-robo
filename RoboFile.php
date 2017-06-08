@@ -16,8 +16,8 @@ class RoboFile extends \Robo\Tasks
     }
     
     public function gitPush() {
-        $this->taskImageMinify('assets/images/*')
-    ->to('dist/images/')
+        $this->taskImageMinify('web/images/*')
+    ->to('web/minified/')
     ->run();
         if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful()) 
         {
