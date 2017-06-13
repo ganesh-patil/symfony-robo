@@ -21,10 +21,9 @@ class RoboFile extends \Robo\Tasks
      * git push task 
      */
     public function gitPush() {
-        // @Task : Minify all images 
-        $this->taskImageMinify('web/images/*')
-            ->to('web/minified/')
-        ->run();
+        // @Task : Minify js file 
+        $this->taskMinify( 'web/js/custom.js' )
+     ->run();
         
         // @Task : Run PHPunit test cases 
         if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful())  // check all unit test cases are passed 
