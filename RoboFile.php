@@ -11,16 +11,25 @@ class RoboFile extends \Robo\Tasks
          $this->_exec('php bin/console server:start');
 
     }
+    
+    // Task to install dependancy using composer.
     public function composerInstall(){
        $this->taskComposerInstall()->run();
     }
     
+    /**
+     * git push task 
+     */
     public function gitPush() {
+        // @Task : Minify all images 
         $this->taskImageMinify('web/images/*')
-    ->to('web/minified/')
-    ->run();
-        if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful()) 
+            ->to('web/minified/')
+        ->run();
+        
+        // @Task : Run PHPunit test cases 
+        if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful())  // check all unit test cases are passed 
         {
+            // @Task: Once all unit test cases are passed, Push changes on github.
            $this->taskGitStack()
             ->stopOnFail()
             ->add('-A')
@@ -30,6 +39,7 @@ class RoboFile extends \Robo\Tasks
         } 
      }
 
+     // Task to run only usit test cases.
      public function unitTest() {
            $this->_exec('./vendor/bin/simple-phpunit');
      }
