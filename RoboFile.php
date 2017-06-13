@@ -25,7 +25,7 @@ class RoboFile extends \Robo\Tasks
         $this->taskMinify( 'web/js/custom.js' )
      ->run();
         
-        // @Task : Run PHPunit test cases 
+        // @Task : Run PHPunit test cases   
         if($this->taskExec('./vendor/bin/simple-phpunit')->run()->wasSuccessful())  // check all unit test cases are passed 
         {
             // @Task: Once all unit test cases are passed, Push changes on github.
